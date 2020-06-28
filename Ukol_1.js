@@ -7,10 +7,11 @@
 // Code:  print('Good')('Luck')
 // Output: Good Luck
 
-function print(first, second) {
-    var result = "";
-    return result.concat(first, " ", second);
+function print(param) {
+    function printAgain(printableParam){
+        return param + ' ' + printableParam
+    }
+    return printAgain;
 }
 
-
-console.log(print("Hello","World"));
+console.log(print("Hello")("World"));

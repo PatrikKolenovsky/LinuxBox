@@ -7,9 +7,10 @@ function addItem() {
         var span = document.createElement("span");
         span.className = "delete";
         span.appendChild(document.createTextNode('-'));
-
+        span.addEventListener('click', function (event) {
+            removeItem(event.target);
+        });
         var name = document.createTextNode(itemName);
-
         li.appendChild(span);
         li.appendChild(name);
         ul.appendChild(li);
@@ -18,18 +19,10 @@ function addItem() {
     }
 }
 
-document.addEventListener('click', function() {
-    removeItem();
-});
-
-function removeItem() {
-
-    var btn = document.getElementsByClassName('delete');
-
-    for (var i = 0; i < btn.length; i++) {
-        btn[i].addEventListener('click', function (e) {
-            e.currentTarget.parentNode.remove();
-        });
+function removeItem(clickedElement) {
+    if (!clickedElement) {
+        return false
     }
-
+    // console.log(clickedElement.parentNode);
+    clickedElement.parentNode.remove();
 }
